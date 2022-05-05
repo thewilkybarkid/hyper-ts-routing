@@ -10,6 +10,20 @@
     "plugin:import/typescript",
     "prettier"
   ],
+  "overrides": [
+    {
+      "files": ["**/*.test.ts"],
+      "rules": {
+        "@typescript-eslint/no-unsafe-argument": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "argsIgnorePattern": "^_"
+          }
+        ]
+      }
+    }
+  ],
   "parserOptions": {
     "project": "./tsconfig.json"
   }
