@@ -2,6 +2,14 @@
 
 A [hyper-ts] middleware for [fp-ts-routing].
 
+## Installation
+
+To install the stable version:
+
+```sh
+npm install hyper-ts-routing
+```
+
 ## Documentation
 
 [📘 Read the documentation][docs]
