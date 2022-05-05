@@ -1,0 +1,16 @@
+{
+  "name": "hyper-ts-routing",
+  "description": "A hyper-ts middleware for fp-ts-routing.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "homepage": "https://github.com/thewilkybarkid/hyper-ts-routing",
+  "repository": "github:thewilkybarkid/hyper-ts-routing",
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-conventional": "^16.2.4",
+    "husky": "^7.0.4"
+  },
+  "scripts": {
+    "prepare": "which husky && husky install || true"
+  }
+}
