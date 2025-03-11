@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/thewilkybarkid/hyper-ts-routing/compare/v0.1.1...v0.1.2) (2025-03-11)
+
+
+### Features
+
+* support fp-ts-routing 0.7 ([e8ef5b1](https://github.com/thewilkybarkid/hyper-ts-routing/commit/e8ef5b19c36fe67921ba94d897e629c155b11233))
+
 ### [0.1.1](https://github.com/thewilkybarkid/hyper-ts-routing/compare/v0.1.0...v0.1.1) (2023-07-04)
 
 
