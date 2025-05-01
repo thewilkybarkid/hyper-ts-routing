@@ -3,6 +3,7 @@
  */
 import * as R from 'fp-ts-routing'
 import * as E from 'fp-ts/Either'
+import * as O from 'fp-ts/Option'
 import * as T from 'fp-ts/Tuple'
 import { Lazy, flow } from 'fp-ts/function'
 import { Connection, StatusOpen } from 'hyper-ts'
@@ -25,7 +26,9 @@ export function route<I = StatusOpen, E = never, A = never>(
   parser: Parser<A>,
   onNone: Lazy<E>,
 ): Middleware<I, I, E, A> {
-  return M.fromConnection(flow(routeFromConnection, E.fromOptionK(onNone)(parser.run), E.map(T.fst)))
+  return M.fromConnection(
+    flow(E.fromOptionK(onNone)(routeFromConnection), E.chainOptionK(onNone)(parser.run), E.map(T.fst)),
+  )
 }
 
 // -------------------------------------------------------------------------------------
@@ -33,9 +36,5 @@ export function route<I = StatusOpen, E = never, A = never>(
 // -------------------------------------------------------------------------------------
 
 function routeFromConnection<I>(c: Connection<I>) {
-  try {
-    return R.Route.parse(c.getOriginalUrl())
-  } catch {
-    return R.Route.empty
-  }
+  return O.tryCatch(() => R.Route.parse(c.getOriginalUrl()))
 }
