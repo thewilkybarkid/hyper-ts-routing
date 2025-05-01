@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/thewilkybarkid/hyper-ts-routing/compare/v0.1.2...v0.1.3) (2025-05-01)
+
+
+### Bug Fixes
+
+* don't fail with malformed URIs ([19a0f5b](https://github.com/thewilkybarkid/hyper-ts-routing/commit/19a0f5bb2c081927fad7f2d62697c3ef5caeb0d1))
+
 ### [0.1.2](https://github.com/thewilkybarkid/hyper-ts-routing/compare/v0.1.1...v0.1.2) (2025-03-11)
 
 
