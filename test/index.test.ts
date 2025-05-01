@@ -43,6 +43,25 @@ describe('hyper-ts-routing', () => {
           }),
         )
       })
+
+      test('when the route is malformed', async () => {
+        await fc.assert(
+          fc.asyncProperty(
+            fc.connection({ url: fc.constantFrom('//', '%6F') }),
+            fc.anything(),
+            async (connection, onNone) => {
+              const parser = new R.Parser(() => O.none)
+
+              const actual = await pipe(
+                connection,
+                _.route(parser, () => onNone),
+              )()
+
+              expect(actual).toStrictEqual(E.left(onNone))
+            },
+          ),
+        )
+      })
     })
   })
 })

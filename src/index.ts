@@ -33,5 +33,9 @@ export function route<I = StatusOpen, E = never, A = never>(
 // -------------------------------------------------------------------------------------
 
 function routeFromConnection<I>(c: Connection<I>) {
-  return R.Route.parse(c.getOriginalUrl())
+  try {
+    return R.Route.parse(c.getOriginalUrl())
+  } catch {
+    return R.Route.empty
+  }
 }

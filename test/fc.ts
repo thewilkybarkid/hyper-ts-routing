@@ -7,12 +7,13 @@ import { createRequest, createResponse } from 'node-mocks-http'
 
 export * from 'fast-check'
 
-export const request = (): fc.Arbitrary<Request> => fc.record({ url: fc.webUrl() }).map(createRequest)
+export const request = ({ url }: { url?: fc.Arbitrary<string> } = {}): fc.Arbitrary<Request> =>
+  fc.record({ url: url ?? fc.webUrl() }).map(createRequest)
 
 export const response = (): fc.Arbitrary<Response> => fc.record({ req: request() }).map(createResponse)
 
-export const connection = <S>(): fc.Arbitrary<Connection<S>> =>
-  fc.tuple(request(), response()).map(args => new ExpressConnection(...args))
+export const connection = <S>({ url }: { url?: fc.Arbitrary<string> } = {}): fc.Arbitrary<Connection<S>> =>
+  fc.tuple(request({ url }), response()).map(args => new ExpressConnection(...args))
 
 export const route = (): fc.Arbitrary<Route> =>
   fc
